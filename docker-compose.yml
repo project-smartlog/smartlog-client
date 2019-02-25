@@ -1,0 +1,21 @@
+version: "3.3"
+
+networks:
+  smartlog:
+    driver: overlay
+
+services:
+  smartlog-client:
+  image: https://gitlab.com/projectsmartlog/smartlog-client:latest
+  privileged: true
+  networks:
+    - smartlog
+  ports:
+    - 8080:8080
+  volumes:
+    - /etc/hyperledger/ext_config:/etc/hyperledger/ext_config
+    - /var/run/docker.sock:/var/run/docker.sock
+  environment:
+    - DOCKER_HOST=unix:///var/run/docker.sock
+    - SMARTLOG_SKIPINSTALL=false
+

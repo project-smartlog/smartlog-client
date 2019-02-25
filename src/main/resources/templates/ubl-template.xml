@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransportationStatus xmlns="urn:oasis:names:specification:ubl:schema:xsd:TransportationStatus-2"
+                      xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                      xmlns:ns2="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+                      xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:ID>{id}</cbc:ID>
+	<cbc:IssueDate>{date}</cbc:IssueDate>
+	<cbc:IssueTime>{time}</cbc:IssueTime>
+	<cbc:TransportationStatusTypeCode>{statusType}</cbc:TransportationStatusTypeCode>
+	<cbc:ShippingOrderID>{shippingOrderId}</cbc:ShippingOrderID>
+	<cac:TransportEvent>
+        <cac:ReportedShipment>
+            <cbc:ID></cbc:ID>
+            <cac:TransportHandlingUnit>
+                <cbc:TraceID>dwa</cbc:TraceID>
+                <cbc:ID></cbc:ID>
+                <cac:TransportEquipment>
+                    <cbc:TraceID>{containerRfid}</cbc:TraceID>
+                    <cbc:ID>{containerId}</cbc:ID>
+                    <cbc:FullnessIndicationCode>{fullnessIndicator}</cbc:FullnessIndicationCode>
+                </cac:TransportEquipment>
+            </cac:TransportHandlingUnit>
+        </cac:ReportedShipment>
+	</cac:TransportEvent>
+	<!--Damage in the course of transportation-->
+	<cbc:TransportExecutionStatusCode></cbc:TransportExecutionStatusCode>
+	<cac:Consignment>
+        <cbc:ID></cbc:ID>
+        <cbc:CarrierAssignedID>{carrierId}</cbc:CarrierAssignedID>
+        <cac:TransportHandlingUnit>
+            <cbc:ID></cbc:ID>
+            <cac:TransportEquipment>
+                <cbc:ID></cbc:ID>
+            </cac:TransportEquipment>
+            <cac:Status>
+                <!--Damage-->
+                <cbc:ConditionCode></cbc:ConditionCode>
+                <!--Equipment failure-->
+                <cbc:StatusReasonCode></cbc:StatusReasonCode>
+                <cbc:StatusReason></cbc:StatusReason>
+            </cac:Status>
+        </cac:TransportHandlingUnit>
+    </cac:Consignment>
+    <cac:StatusLocation>
+        <cbc:Description>{location}</cbc:Description>
+	</cac:StatusLocation>
+	<cac:SenderParty>
+        <cac:PartyIdentification>
+            <cbc:ID>{senderParty}</cbc:ID>
+        </cac:PartyIdentification>
+	</cac:SenderParty>
+	<!-- Extensions -->
+	<ns2:UBLExtensions>
+        <ns2:UBLExtension>
+            <Name>supplyChainID</Name>
+            <ns2:ExtensionContent>{chain}</ns2:ExtensionContent>
+        </ns2:UBLExtension>
+    </ns2:UBLExtensions>
+</TransportationStatus>
